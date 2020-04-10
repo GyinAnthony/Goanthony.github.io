@@ -1,19 +1,19 @@
 h1
 {
-    position:Static;
-    transform: translate(0%);
+    margin: auto;
 
 }
 h2{
-    position:Static;
+    margin: auto;
+    position:dynamic;
     font-style:italic ;
     font-size: 15px;
-    transform: translate(0%);
 
 }
 #gameboarddiv
 {
-   position:Static;
+   position:dynamic;
+   text-align: center;
     left: 50%;
     transform: translate(0%);
     width: 600px;
@@ -28,8 +28,7 @@ h2{
 
 }
 #gameboarddiv table tr td 
-{
-    width: 90px;
+{    width: 90px;
     height: 90px;
     border:solid black;
     border-radius:100%;
@@ -37,11 +36,21 @@ h2{
 
 #button
 {
-top:-4.7%;
- position: absolute;
+  top:-4.7%;
+  left:0%;
+  position: absolute;
   width: 30%;
   border: 3px solid #8AC007;
 
 }
 
+#spacing
+{
+    margin: 10px 10px 10px 10px;
+}
+
+.demo 
+{
+    margin:0px 10px 25px 10px;
+}
 
