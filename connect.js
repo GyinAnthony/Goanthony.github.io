@@ -39,6 +39,9 @@ button.addEventListener("click", ()=>{
     }
     on = true;
     counter = 0;
+    playerturn = true; 
+    playertag.innerHTML = "Player Turn: Player1!-RED";
+
 });
 
 //Make a event listener to every single cell in document. and play the game with it
@@ -71,7 +74,7 @@ for (let i = 0; i < gameboard.rows.length; i++)
                     //When Playerturn is true its player 1 and change color to red. 
                     if(playerturn == true)
                     {
-                        playertag.innerHTML = "Player2!-BLUE";
+                        playertag.innerHTML = "Player Turn: Player2!-BLUE";
                         if(gameboard.rows[i].cells[column].style.backgroundColor != p1Color && gameboard.rows[i].cells[column].style.backgroundColor != p2Color )
                         {
                         gameboard.rows[i].cells[column].style.backgroundColor = p1Color;
@@ -89,7 +92,7 @@ for (let i = 0; i < gameboard.rows.length; i++)
                     //When PLayerturn is false its player 2 and change color to blue.
                     if(playerturn == false)
                     {
-                        playertag.innerHTML = "Player1!-RED";
+                        playertag.innerHTML = "Player Turn: Player1!-RED";
                         if(gameboard.rows[i].cells[column].style.backgroundColor != p1Color && gameboard.rows[i].cells[column].style.backgroundColor != p2Color )
                         {
                         gameboard.rows[i].cells[column].style.backgroundColor = p2Color;
@@ -214,6 +217,3 @@ function diagonalupright()
 
 
 });
-
-
-
