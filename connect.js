@@ -40,7 +40,7 @@ button.addEventListener("click", ()=>{
     on = true;
     counter = 0;
     playerturn = true; 
-    playertag.innerHTML = "Player Turn: Player1!-RED";
+    playertag.innerHTML = "&quotPlayer Turn: Player1!-RED&quot";
 
 });
 
