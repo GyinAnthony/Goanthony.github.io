@@ -7,11 +7,15 @@ let playerturn = true;
 let gameboard = document.getElementById("gameboard");
 let p1Color = "red"; 
 let p2Color = "blue";
+    //Swapping between red and blue label above the board
 let playertag = document.getElementById("playertag");
 let datacell = document.getElementsByTagName("td"); 
 let totalRow = document.getElementById("gameboard").rows.length;
+    //Counter for the tie case 
 let counter = 0; 
+    //Default previous color to red 
 let prevcolor = "red";
+    //Boolean for when the player can play 
 let on = true; 
 
 //Trying to log the coordinate so I can see which one I click on(Helps Debug) 
@@ -58,7 +62,6 @@ for (let i = 0; i < gameboard.rows.length; i++)
             let column = event.target.cellIndex; 
             console.log(column);
             console.log(counter);
-            //BUG! I need to figure out how to fix 
             //There is only 42 Turns in the game if all 42 turns has been played and no win then
             if (counter == 41 && finalcheck()== false)
             {
@@ -75,11 +78,13 @@ for (let i = 0; i < gameboard.rows.length; i++)
                     if(playerturn == true)
                     {
                         playertag.innerHTML = "Player Turn: Player2!-BLUE";
+                        //check if there is a color since default there is no color and check if its not the other color
                         if(gameboard.rows[i].cells[column].style.backgroundColor != p1Color && gameboard.rows[i].cells[column].style.backgroundColor != p2Color )
                         {
                         gameboard.rows[i].cells[column].style.backgroundColor = p1Color;
                         prevcolor = p1Color;
                         counter++;
+                            //call helper check to check the board for wins then stop game 
                         if(finalcheck())
                         {
                             gameboard.rows[i].cells[column].style.backgroundColor = p1Color;
@@ -93,11 +98,14 @@ for (let i = 0; i < gameboard.rows.length; i++)
                     if(playerturn == false)
                     {
                         playertag.innerHTML = "Player Turn: Player1!-RED";
+                         //check if there is a color since default there is no color and check if its not the other color
                         if(gameboard.rows[i].cells[column].style.backgroundColor != p1Color && gameboard.rows[i].cells[column].style.backgroundColor != p2Color )
                         {
                         gameboard.rows[i].cells[column].style.backgroundColor = p2Color;
                         prevcolor = p2Color;
                         counter++
+                      //call helper check to check the board for wins then stop game 
+
                         if(finalcheck())
                         {
                             gameboard.rows[i].cells[column].style.backgroundColor = p2Color;
@@ -119,6 +127,7 @@ for (let i = 0; i < gameboard.rows.length; i++)
     }
 };
 
+    //Final check calls the help checks for the different directions 
 function finalcheck()
 {
     if(yaxis() || xaxis() || diagonaldownright() || diagonalupright()) 
@@ -132,7 +141,7 @@ function finalcheck()
 }
 
 
-//Checker for the directions 
+//Checker for the directions up down 
 function yaxis()
 {
     for (let i = 0; i < gameboard.rows.length-3; i++) 
@@ -151,7 +160,7 @@ function yaxis()
         }
     }
 }
-
+//checking left right 
 function xaxis()
 {
     for (let i = 0; i < gameboard.rows.length; i++) 
@@ -170,6 +179,7 @@ function xaxis()
         }
 }
 }
+    //checking any down right win or up left wins 
 
 function diagonaldownright()
 {
@@ -192,6 +202,7 @@ function diagonaldownright()
     }
 }
 
+    //Checking the case when its upright wins
 function diagonalupright()
 {
     for (let i = 5; i > 2; i--) 
